@@ -17,7 +17,8 @@ class Abbigliamento {
         let sconto = this.prezzoivainclusa * (this.saldo / 100);
         return sconto;
     }
-    getacquistocapo(sconto) {
+    getacquistocapo() {
+        let sconto = this.prezzoivainclusa * (this.saldo / 100);
         let prezzoTot = this.prezzoivainclusa - sconto;
         return prezzoTot;
     }
@@ -46,7 +47,7 @@ function displayCapi(arr) {
     <h2>${prodotto.collezione}</h2>
     <h3>Prezzo totale: ${prodotto.prezzoivainclusa}€</h3>  
     <h3> Sconto disponibile: ${prodotto.saldo}%</h3>
-    <h3>Prezzo con sconto applicato: ${prodotto.getacquistocapo}€</h3> 
+    <h3>Prezzo con sconto applicato: ${Math.round(prodotto.getacquistocapo())}€</h3> 
     `;
         container === null || container === void 0 ? void 0 : container.appendChild(card);
     });
