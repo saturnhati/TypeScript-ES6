@@ -30,10 +30,24 @@ function getCapi(data) {
         let { id, codprod, collezione, capo, modello, quantita, colore, prezzoivaesclusa, prezzoivainclusa, disponibile, saldo } = element;
         capi.push(new Abbigliamento(id, codprod, collezione, capo, modello, quantita, colore, prezzoivaesclusa, prezzoivainclusa, disponibile, saldo));
     });
-    console.log(capi);
     displayCapi(capi);
 }
 function displayCapi(arr) {
     console.log(arr);
-    // funzione con cui poi posso creare delle card e displayare gli elementi sull'Html
+    let container = document.querySelector("#container");
+    arr.forEach((prodotto) => {
+        let card = document.createElement("div");
+        card.classList.add("class");
+        card.style.width = "200px";
+        card.style.height = "400px";
+        card.style.background = "lavender";
+        card.innerHTML = ` 
+    <h1>${prodotto.capo}</h1>
+    <h2>${prodotto.collezione}</h2>
+    <h3>Prezzo totale: ${prodotto.prezzoivainclusa}€</h3>  
+    <h3> Sconto disponibile: ${prodotto.saldo}%</h3>
+    <h3>Prezzo con sconto applicato: ${prodotto.getacquistocapo}€</h3> 
+    `;
+        container === null || container === void 0 ? void 0 : container.appendChild(card);
+    });
 }
